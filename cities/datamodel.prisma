@@ -1,0 +1,21 @@
+
+
+# Object to represent a Person
+type City {
+    # The technical id
+    id: ID! @id
+    # Fullname of the person
+    name: String! @unique
+    # Talks given by the person
+    bars: [Bar!] @relation(link: INLINE)
+}
+
+# Object to represent a talk
+type Bar {
+    # The technical id
+    id: ID! @id
+    # Title of the talk
+    name: String! 
+    city: City
+}
+

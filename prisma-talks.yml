@@ -1,0 +1,15 @@
+endpoint: http://localhost:4466
+datamodel: ./talks/datamodel.prisma
+# datamodel: ${self:custom.datamodelPath}.prisma
+
+# custom:
+#   datamodelPath: ./talks/datamodel
+
+generate:
+  - generator: javascript-client
+    output: ./talks/generated/prisma-client-js/
+  - generator: graphql-schema
+    output: ./talks/generated/schema.graphql
+
+seed:
+  run: node ./talks/seed.js

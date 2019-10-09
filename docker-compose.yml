@@ -1,0 +1,42 @@
+version: "3"
+services:
+  prisma-cities:
+    image: prismagraphql/prisma:1.34
+    restart: always
+    ports:
+      - "4467:4466"
+    environment:
+      PRISMA_CONFIG: |
+        port: 4466
+        databases:
+          default:
+            connector: mongo
+            uri: mongodb://prisma:prisma@mongo-db
+            database: cities
+  prisma-talks:
+    image: prismagraphql/prisma:1.34
+    restart: always
+    ports:
+      - "4466:4466"
+    environment:
+      PRISMA_CONFIG: |
+        port: 4466
+        # managementApiSecret: mysecret42
+        databases:
+          default:
+            connector: mongo
+            uri: mongodb://prisma:prisma@mongo-db
+            database: talks
+
+  mongo-db:
+    image: mongo:3.6
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: prisma
+      MONGO_INITDB_ROOT_PASSWORD: prisma
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo:/var/lib/mongo
+volumes:
+  mongo:

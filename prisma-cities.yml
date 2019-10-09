@@ -1,0 +1,15 @@
+endpoint: http://localhost:4467
+datamodel: ./cities/datamodel.prisma
+
+generate:
+  - generator: javascript-client
+    output: ./cities/generated/prisma-client-js/
+  - generator: graphql-schema
+    output: ./cities/generated/schema.graphql
+
+# Ensures Prisma client is re-generated after a datamodel change.
+hooks:
+  post-deploy:
+    - prisma generate -p prisma-cities.yml
+seed:
+  run: node ./cities/seed.js

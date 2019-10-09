@@ -1,0 +1,56 @@
+
+
+# Object to represent a Person
+type Person {
+    # The technical id
+    id: ID! @id
+    # Fullname of the person
+    name: String!
+    # URL to the blog
+    blog: String
+    # Github account id
+    githubAccount: String
+    # Talks given by the person
+    talks: [Talk!] @relation(link: INLINE)
+}
+
+# Object to represent a talk
+type Talk {
+    # The technical id
+    id: ID! @id
+    # Title of the talk
+    title: String!
+    # Short summary of the talk
+    summary: String
+    # Speakers of the talk
+    speakers: [Person!]
+    # Conferences where the talk is on the agenda
+    conferences: [Conference!] @relation(link: INLINE)
+}
+
+# Object to represent a conference
+type Conference {
+    # The technical id
+    id: ID! @id
+    # Name of the conference
+    name: String!
+    # City where the conference is held
+    city: String,
+    # Talks on the conference agenda
+    talks: [Talk!]
+}
+
+# Object to represent a comment
+type Comment {
+    # The technical id
+    id: ID! @id
+    # The comment text
+    comment: String!
+    # Creation time of the comment
+    createdOn : String
+    # The author of the comment
+    author: String!
+    # The talk for which the comment is made
+    talk: Talk! @relation(link: INLINE)
+}
+
