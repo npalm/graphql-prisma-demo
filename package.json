@@ -9,11 +9,11 @@
   },
   "scripts": {
     "start": "docker-compose up -d",
-    "deploy-talks": "prisma deploy -p prisma-talks.yml --no-seed --no-generate && yarn run generate-talks && yarn run seed-talks",
+    "deploy-talks": "prisma deploy -p prisma-talks.yml --no-seed --no-generate && npm run generate-talks && yarn run seed-talks",
     "seed-talks": "prisma reset -f -p prisma-talks.yml && prisma seed -p prisma-talks.yml",
     "reset-talks": "prisma reset -f -p prisma-talks.yml",
     "generate-talks": "prisma generate -p prisma-talks.yml",
-    "deploy-cities": "prisma deploy -p prisma-cities.yml --no-seed --no-generate && yarn run generate-cities && yarn run seed-cities",
+    "deploy-cities": "prisma deploy -p prisma-cities.yml --no-seed --no-generate && npm run generate-cities && yarn run seed-cities",
     "seed-cities": "prisma reset -f -p prisma-cities.yml && prisma seed -p prisma-cities.yml",
     "reset-cities": "prisma reset -f -p prisma-cities.yml",
     "generate-cities": "prisma generate -p prisma-cities.yml"

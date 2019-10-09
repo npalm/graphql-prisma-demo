@@ -8,12 +8,17 @@ docker -v &>/dev/null || {
 }
 
 docker-compose -v &>/dev/null || {
-    notinstalled docker
+    notinstalled docker-compose
     ERROR=1
 }
 
-yarn -v &>/dev/null || {
-    notinstalled docker
+npm -v &>/dev/null || {
+    notinstalled npm
+    ERROR=1
+}
+
+node -v &>/dev/null || {
+    notinstalled node
     ERROR=1
 }
 
