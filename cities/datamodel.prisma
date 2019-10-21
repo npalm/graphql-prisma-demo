@@ -11,8 +11,6 @@ type Bar {
     city: City!
 }
 
-
-# Object to represent a talk
 type Restaurant {
     id: ID! @id
     name: String! 
