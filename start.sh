@@ -29,6 +29,6 @@ fi
 docker-compose up -d
 printf "%s\n" "Waiting 10 seconds before invoking deploy. Hopefully docker services are up."
 sleep 10
-yarn
-yarn run deploy-cities
-yarn run deploy-talks
+npm
+npm run deploy-cities
+npm run deploy-talks

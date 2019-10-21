@@ -10,7 +10,7 @@ This sample is part of a [GraphQL Yoga Sample](https://github.com/npalm/graphql-
 
 ### Required software
 - Node 10+
-- docker and docker-composse
+- docker and docker-compose
 
 ### Start
 

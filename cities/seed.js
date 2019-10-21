@@ -38,9 +38,21 @@ async function loadBar(data) {
 	await Promise.all(request);
 }
 
+async function loadRestaurant(data) {
+	const request = data.map(async restaurant => {
+		restaurant.city = {
+			connect: await findCity(restaurant)
+		}
+
+		await prisma.createRestaurant(restaurant)
+	})
+	await Promise.all(request);
+}
+
 async function main() {
 	await loadCity(await csv().fromFile('./cities/data/cities.csv'))
 	await loadBar(await csv().fromFile('./cities/data/bars.csv'))
+	await loadRestaurant(await csv().fromFile('./cities/data/restaurants.csv'))
 }
 
 main().catch(e => console.error(e))
