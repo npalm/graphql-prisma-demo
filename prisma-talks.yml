@@ -1,9 +1,5 @@
 endpoint: http://localhost:4466
 datamodel: ./talks/datamodel.prisma
-# datamodel: ${self:custom.datamodelPath}.prisma
-
-# custom:
-#   datamodelPath: ./talks/datamodel
 
 generate:
   - generator: javascript-client
